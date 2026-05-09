@@ -1,0 +1,758 @@
+{
+  "rute": {
+    "dari": "Tegalluar Summarecon",
+    "ke": "Halim",
+    "tanggal": "2026-05-09",
+    "total_hasil": 22
+  },
+  "jadwal": [
+    {
+      "kode_kereta": "G1022",
+      "stasiun_persinggahan": true,
+      "berangkat": {
+        "waktu": "10:35",
+        "zona": "WIB",
+        "stasiun": "Tegalluar Summarecon",
+        "tipe": "keberangkatan"
+      },
+      "tiba": {
+        "waktu": "11:29",
+        "zona": "WIB",
+        "stasiun": "Halim",
+        "tipe": "tujuan"
+      },
+      "durasi": "54m",
+      "kelas": [
+        {
+          "nama": "First Class",
+          "harga": 600000,
+          "status": "Tiket terbatas"
+        },
+        {
+          "nama": "Kelas Bisnis",
+          "harga": 450000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Ekonomi Premium",
+          "harga": 350000,
+          "status": "Tiket tersedia"
+        }
+      ]
+    },
+    {
+      "kode_kereta": "G1024",
+      "stasiun_persinggahan": true,
+      "berangkat": {
+        "waktu": "11:05",
+        "zona": "WIB",
+        "stasiun": "Tegalluar Summarecon",
+        "tipe": "keberangkatan"
+      },
+      "tiba": {
+        "waktu": "11:52",
+        "zona": "WIB",
+        "stasiun": "Halim",
+        "tipe": "tujuan"
+      },
+      "durasi": "47m",
+      "kelas": [
+        {
+          "nama": "First Class",
+          "harga": 600000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Bisnis",
+          "harga": 450000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Ekonomi Premium",
+          "harga": 350000,
+          "status": "Tiket tersedia"
+        }
+      ]
+    },
+    {
+      "kode_kereta": "G1026",
+      "stasiun_persinggahan": true,
+      "berangkat": {
+        "waktu": "11:35",
+        "zona": "WIB",
+        "stasiun": "Tegalluar Summarecon",
+        "tipe": "keberangkatan"
+      },
+      "tiba": {
+        "waktu": "12:29",
+        "zona": "WIB",
+        "stasiun": "Halim",
+        "tipe": "tujuan"
+      },
+      "durasi": "54m",
+      "kelas": [
+        {
+          "nama": "First Class",
+          "harga": 600000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Bisnis",
+          "harga": 450000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Ekonomi Premium",
+          "harga": 350000,
+          "status": "Tiket tersedia"
+        }
+      ]
+    },
+    {
+      "kode_kereta": "G1028",
+      "stasiun_persinggahan": true,
+      "berangkat": {
+        "waktu": "12:05",
+        "zona": "WIB",
+        "stasiun": "Tegalluar Summarecon",
+        "tipe": "keberangkatan"
+      },
+      "tiba": {
+        "waktu": "12:52",
+        "zona": "WIB",
+        "stasiun": "Halim",
+        "tipe": "tujuan"
+      },
+      "durasi": "47m",
+      "kelas": [
+        {
+          "nama": "First Class",
+          "harga": 600000,
+          "status": "Tiket terbatas"
+        },
+        {
+          "nama": "Kelas Bisnis",
+          "harga": 450000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Ekonomi Premium",
+          "harga": 350000,
+          "status": "Tiket tersedia"
+        }
+      ]
+    },
+    {
+      "kode_kereta": "G1030",
+      "stasiun_persinggahan": true,
+      "berangkat": {
+        "waktu": "12:35",
+        "zona": "WIB",
+        "stasiun": "Tegalluar Summarecon",
+        "tipe": "keberangkatan"
+      },
+      "tiba": {
+        "waktu": "13:29",
+        "zona": "WIB",
+        "stasiun": "Halim",
+        "tipe": "tujuan"
+      },
+      "durasi": "54m",
+      "kelas": [
+        {
+          "nama": "First Class",
+          "harga": 600000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Bisnis",
+          "harga": 450000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Ekonomi Premium",
+          "harga": 350000,
+          "status": "Tiket tersedia"
+        }
+      ]
+    },
+    {
+      "kode_kereta": "G1032",
+      "stasiun_persinggahan": true,
+      "berangkat": {
+        "waktu": "13:05",
+        "zona": "WIB",
+        "stasiun": "Tegalluar Summarecon",
+        "tipe": "keberangkatan"
+      },
+      "tiba": {
+        "waktu": "13:52",
+        "zona": "WIB",
+        "stasiun": "Halim",
+        "tipe": "tujuan"
+      },
+      "durasi": "47m",
+      "kelas": [
+        {
+          "nama": "First Class",
+          "harga": 600000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Bisnis",
+          "harga": 450000,
+          "status": "Tiket terbatas"
+        },
+        {
+          "nama": "Kelas Ekonomi Premium",
+          "harga": 350000,
+          "status": "Tiket tersedia"
+        }
+      ]
+    },
+    {
+      "kode_kereta": "G1034",
+      "stasiun_persinggahan": true,
+      "berangkat": {
+        "waktu": "13:35",
+        "zona": "WIB",
+        "stasiun": "Tegalluar Summarecon",
+        "tipe": "keberangkatan"
+      },
+      "tiba": {
+        "waktu": "14:29",
+        "zona": "WIB",
+        "stasiun": "Halim",
+        "tipe": "tujuan"
+      },
+      "durasi": "54m",
+      "kelas": [
+        {
+          "nama": "First Class",
+          "harga": 600000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Bisnis",
+          "harga": 450000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Ekonomi Premium",
+          "harga": 350000,
+          "status": "Tiket tersedia"
+        }
+      ]
+    },
+    {
+      "kode_kereta": "G1036",
+      "stasiun_persinggahan": true,
+      "berangkat": {
+        "waktu": "14:05",
+        "zona": "WIB",
+        "stasiun": "Tegalluar Summarecon",
+        "tipe": "keberangkatan"
+      },
+      "tiba": {
+        "waktu": "14:52",
+        "zona": "WIB",
+        "stasiun": "Halim",
+        "tipe": "tujuan"
+      },
+      "durasi": "47m",
+      "kelas": [
+        {
+          "nama": "First Class",
+          "harga": 600000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Bisnis",
+          "harga": 450000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Ekonomi Premium",
+          "harga": 350000,
+          "status": "Tiket tersedia"
+        }
+      ]
+    },
+    {
+      "kode_kereta": "G1038",
+      "stasiun_persinggahan": true,
+      "berangkat": {
+        "waktu": "14:35",
+        "zona": "WIB",
+        "stasiun": "Tegalluar Summarecon",
+        "tipe": "keberangkatan"
+      },
+      "tiba": {
+        "waktu": "15:29",
+        "zona": "WIB",
+        "stasiun": "Halim",
+        "tipe": "tujuan"
+      },
+      "durasi": "54m",
+      "kelas": [
+        {
+          "nama": "First Class",
+          "harga": 600000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Bisnis",
+          "harga": 450000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Ekonomi Premium",
+          "harga": 350000,
+          "status": "Tiket tersedia"
+        }
+      ]
+    },
+    {
+      "kode_kereta": "G1040",
+      "stasiun_persinggahan": true,
+      "berangkat": {
+        "waktu": "15:05",
+        "zona": "WIB",
+        "stasiun": "Tegalluar Summarecon",
+        "tipe": "keberangkatan"
+      },
+      "tiba": {
+        "waktu": "15:52",
+        "zona": "WIB",
+        "stasiun": "Halim",
+        "tipe": "tujuan"
+      },
+      "durasi": "47m",
+      "kelas": [
+        {
+          "nama": "First Class",
+          "harga": 600000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Bisnis",
+          "harga": 450000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Ekonomi Premium",
+          "harga": 350000,
+          "status": "Tiket tersedia"
+        }
+      ]
+    },
+    {
+      "kode_kereta": "G1042",
+      "stasiun_persinggahan": true,
+      "berangkat": {
+        "waktu": "15:35",
+        "zona": "WIB",
+        "stasiun": "Tegalluar Summarecon",
+        "tipe": "keberangkatan"
+      },
+      "tiba": {
+        "waktu": "16:29",
+        "zona": "WIB",
+        "stasiun": "Halim",
+        "tipe": "tujuan"
+      },
+      "durasi": "54m",
+      "kelas": [
+        {
+          "nama": "First Class",
+          "harga": 600000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Bisnis",
+          "harga": 450000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Ekonomi Premium",
+          "harga": 350000,
+          "status": "Tiket tersedia"
+        }
+      ]
+    },
+    {
+      "kode_kereta": "G1044",
+      "stasiun_persinggahan": true,
+      "berangkat": {
+        "waktu": "16:05",
+        "zona": "WIB",
+        "stasiun": "Tegalluar Summarecon",
+        "tipe": "keberangkatan"
+      },
+      "tiba": {
+        "waktu": "16:52",
+        "zona": "WIB",
+        "stasiun": "Halim",
+        "tipe": "tujuan"
+      },
+      "durasi": "47m",
+      "kelas": [
+        {
+          "nama": "First Class",
+          "harga": 600000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Bisnis",
+          "harga": 450000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Ekonomi Premium",
+          "harga": 350000,
+          "status": "Tiket tersedia"
+        }
+      ]
+    },
+    {
+      "kode_kereta": "G1046",
+      "stasiun_persinggahan": true,
+      "berangkat": {
+        "waktu": "16:35",
+        "zona": "WIB",
+        "stasiun": "Tegalluar Summarecon",
+        "tipe": "keberangkatan"
+      },
+      "tiba": {
+        "waktu": "17:29",
+        "zona": "WIB",
+        "stasiun": "Halim",
+        "tipe": "tujuan"
+      },
+      "durasi": "54m",
+      "kelas": [
+        {
+          "nama": "First Class",
+          "harga": 600000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Bisnis",
+          "harga": 450000,
+          "status": "Tiket terbatas"
+        },
+        {
+          "nama": "Kelas Ekonomi Premium",
+          "harga": 350000,
+          "status": "Tiket tersedia"
+        }
+      ]
+    },
+    {
+      "kode_kereta": "G1048",
+      "stasiun_persinggahan": true,
+      "berangkat": {
+        "waktu": "17:05",
+        "zona": "WIB",
+        "stasiun": "Tegalluar Summarecon",
+        "tipe": "keberangkatan"
+      },
+      "tiba": {
+        "waktu": "17:52",
+        "zona": "WIB",
+        "stasiun": "Halim",
+        "tipe": "tujuan"
+      },
+      "durasi": "47m",
+      "kelas": [
+        {
+          "nama": "First Class",
+          "harga": 600000,
+          "status": "Tiket terbatas"
+        },
+        {
+          "nama": "Kelas Bisnis",
+          "harga": 450000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Ekonomi Premium",
+          "harga": 350000,
+          "status": "Tiket tersedia"
+        }
+      ]
+    },
+    {
+      "kode_kereta": "G1050",
+      "stasiun_persinggahan": true,
+      "berangkat": {
+        "waktu": "17:35",
+        "zona": "WIB",
+        "stasiun": "Tegalluar Summarecon",
+        "tipe": "keberangkatan"
+      },
+      "tiba": {
+        "waktu": "18:29",
+        "zona": "WIB",
+        "stasiun": "Halim",
+        "tipe": "tujuan"
+      },
+      "durasi": "54m",
+      "kelas": [
+        {
+          "nama": "First Class",
+          "harga": 600000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Bisnis",
+          "harga": 450000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Ekonomi Premium",
+          "harga": 350000,
+          "status": "Tiket tersedia"
+        }
+      ]
+    },
+    {
+      "kode_kereta": "G1052",
+      "stasiun_persinggahan": true,
+      "berangkat": {
+        "waktu": "18:05",
+        "zona": "WIB",
+        "stasiun": "Tegalluar Summarecon",
+        "tipe": "keberangkatan"
+      },
+      "tiba": {
+        "waktu": "18:52",
+        "zona": "WIB",
+        "stasiun": "Halim",
+        "tipe": "tujuan"
+      },
+      "durasi": "47m",
+      "kelas": [
+        {
+          "nama": "First Class",
+          "harga": 600000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Bisnis",
+          "harga": 450000,
+          "status": "Tiket terbatas"
+        },
+        {
+          "nama": "Kelas Ekonomi Premium",
+          "harga": 350000,
+          "status": "Tiket tersedia"
+        }
+      ]
+    },
+    {
+      "kode_kereta": "G1054",
+      "stasiun_persinggahan": true,
+      "berangkat": {
+        "waktu": "18:35",
+        "zona": "WIB",
+        "stasiun": "Tegalluar Summarecon",
+        "tipe": "keberangkatan"
+      },
+      "tiba": {
+        "waktu": "19:29",
+        "zona": "WIB",
+        "stasiun": "Halim",
+        "tipe": "tujuan"
+      },
+      "durasi": "54m",
+      "kelas": [
+        {
+          "nama": "First Class",
+          "harga": 600000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Bisnis",
+          "harga": 450000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Ekonomi Premium",
+          "harga": 350000,
+          "status": "Tiket tersedia"
+        }
+      ]
+    },
+    {
+      "kode_kereta": "G1056",
+      "stasiun_persinggahan": true,
+      "berangkat": {
+        "waktu": "19:05",
+        "zona": "WIB",
+        "stasiun": "Tegalluar Summarecon",
+        "tipe": "keberangkatan"
+      },
+      "tiba": {
+        "waktu": "19:52",
+        "zona": "WIB",
+        "stasiun": "Halim",
+        "tipe": "tujuan"
+      },
+      "durasi": "47m",
+      "kelas": [
+        {
+          "nama": "First Class",
+          "harga": 600000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Bisnis",
+          "harga": 450000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Ekonomi Premium",
+          "harga": 350000,
+          "status": "Tiket tersedia"
+        }
+      ]
+    },
+    {
+      "kode_kereta": "G1058",
+      "stasiun_persinggahan": true,
+      "berangkat": {
+        "waktu": "19:35",
+        "zona": "WIB",
+        "stasiun": "Tegalluar Summarecon",
+        "tipe": "keberangkatan"
+      },
+      "tiba": {
+        "waktu": "20:29",
+        "zona": "WIB",
+        "stasiun": "Halim",
+        "tipe": "tujuan"
+      },
+      "durasi": "54m",
+      "kelas": [
+        {
+          "nama": "First Class",
+          "harga": 600000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Bisnis",
+          "harga": 450000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Ekonomi Premium",
+          "harga": 350000,
+          "status": "Tiket tersedia"
+        }
+      ]
+    },
+    {
+      "kode_kereta": "G1060",
+      "stasiun_persinggahan": true,
+      "berangkat": {
+        "waktu": "20:05",
+        "zona": "WIB",
+        "stasiun": "Tegalluar Summarecon",
+        "tipe": "keberangkatan"
+      },
+      "tiba": {
+        "waktu": "20:52",
+        "zona": "WIB",
+        "stasiun": "Halim",
+        "tipe": "tujuan"
+      },
+      "durasi": "47m",
+      "kelas": [
+        {
+          "nama": "First Class",
+          "harga": 600000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Bisnis",
+          "harga": 450000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Ekonomi Premium",
+          "harga": 350000,
+          "status": "Tiket tersedia"
+        }
+      ]
+    },
+    {
+      "kode_kereta": "G1062",
+      "stasiun_persinggahan": true,
+      "berangkat": {
+        "waktu": "20:35",
+        "zona": "WIB",
+        "stasiun": "Tegalluar Summarecon",
+        "tipe": "keberangkatan"
+      },
+      "tiba": {
+        "waktu": "21:29",
+        "zona": "WIB",
+        "stasiun": "Halim",
+        "tipe": "tujuan"
+      },
+      "durasi": "54m",
+      "kelas": [
+        {
+          "nama": "First Class",
+          "harga": 600000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Bisnis",
+          "harga": 450000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Ekonomi Premium",
+          "harga": 350000,
+          "status": "Tiket tersedia"
+        }
+      ]
+    },
+    {
+      "kode_kereta": "G1064",
+      "stasiun_persinggahan": true,
+      "berangkat": {
+        "waktu": "21:05",
+        "zona": "WIB",
+        "stasiun": "Tegalluar Summarecon",
+        "tipe": "keberangkatan"
+      },
+      "tiba": {
+        "waktu": "21:52",
+        "zona": "WIB",
+        "stasiun": "Halim",
+        "tipe": "tujuan"
+      },
+      "durasi": "47m",
+      "kelas": [
+        {
+          "nama": "First Class",
+          "harga": 600000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Bisnis",
+          "harga": 450000,
+          "status": "Tiket tersedia"
+        },
+        {
+          "nama": "Kelas Ekonomi Premium",
+          "harga": 350000,
+          "status": "Tiket tersedia"
+        }
+      ]
+    }
+  ]
+}

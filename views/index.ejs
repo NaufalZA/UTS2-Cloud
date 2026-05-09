@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhooshTracker - Info & Laporan</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; max-width: 800px; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .form-group { margin-bottom: 15px; }
+        .card { border: 1px solid #ccc; padding: 15px; margin-bottom: 15px; border-radius: 5px; }
+        img { max-width: 100%; height: auto; border-radius: 5px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>WhooshTracker</h1>
+    <p>Pantau jadwal dan laporkan kendala di stasiun Kereta Cepat Whoosh.</p>
+
+    <h2>Jadwal Keberangkatan</h2>
+    <table>
+        <tr>
+            <th>Stasiun Asal</th>
+            <th>Stasiun Tujuan</th>
+            <th>Waktu Berangkat</th>
+        </tr>
+        <tr>
+            <td>Halim</td>
+            <td>Padalarang</td>
+            <td>08:45 WIB</td>
+        </tr>
+        <tr>
+            <td>Padalarang</td>
+            <td>Tegalluar</td>
+            <td>09:15 WIB</td>
+        </tr>
+    </table>
+
+    <h2>Laporkan Kendala</h2>
+    <form action="/lapor" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>Nama Anda:</label><br>
+            <input type="text" name="namaPenumpang" required>
+        </div>
+        <div class="form-group">
+            <label>Lokasi Stasiun:</label><br>
+            <select name="stasiun" required>
+                <option value="Halim">Halim</option>
+                <option value="Karawang">Karawang</option>
+                <option value="Padalarang">Padalarang</option>
+                <option value="Tegalluar">Tegalluar</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Deskripsi Kendala:</label><br>
+            <textarea name="kendala" rows="3" required></textarea>
+        </div>
+        <div class="form-group">
+            <label>Unggah Foto Bukti (Wajib):</label><br>
+            <input type="file" name="fotoBukti" accept="image/*" required>
+        </div>
+        <button type="submit">Kirim Laporan</button>
+    </form>
+
+    <h2>Laporan Masyarakat</h2>
+    <% if (laporan.length > 0) { %>
+        <% laporan.forEach(function(item) { %>
+            <div class="card">
+                <strong><%= item.nama_penumpang %></strong> di <strong><%= item.stasiun %></strong><br>
+                <small><%= new Date(item.waktu).toLocaleString('id-ID') %></small>
+                <p><%= item.kendala %></p>
+                <img src="https://<%= cloudfrontUrl %>/<%= item.foto_key %>" alt="Foto Laporan">
+            </div>
+        <% }); %>
+    <% } else { %>
+        <p>Belum ada laporan dari masyarakat.</p>
+    <% } %>
+
+</body>
+</html>
