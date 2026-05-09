@@ -5,6 +5,9 @@ const { S3Client } = require('@aws-sdk/client-s3');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
 const path = require('path');
+const fs = require('fs');
+
+const jadwalData = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'jadwal_kereta.json'), 'utf-8'));
 
 const app = express();
 const port = process.env.PORT || 80;
@@ -55,7 +58,9 @@ app.get('/', async (req, res) => {
     const result = await pool.query('SELECT * FROM laporan ORDER BY waktu DESC');
     res.render('index', { 
         laporan: result.rows,
-        cloudfrontUrl: process.env.CLOUDFRONT_URL 
+        cloudfrontUrl: process.env.CLOUDFRONT_URL,
+        jadwal: jadwalData.jadwal,
+        rute: jadwalData.rute
     });
   } catch (err) {
     console.error(err);

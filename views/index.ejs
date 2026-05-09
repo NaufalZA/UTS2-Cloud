@@ -3,80 +3,499 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhooshTracker - Info & Laporan</title>
+    <title>WhooshTracker — Kereta Cepat Jakarta–Bandung</title>
+    <meta name="description" content="Pantau jadwal dan laporkan kendala di stasiun Kereta Cepat Whoosh Jakarta–Bandung secara real-time.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; max-width: 800px; }
-        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
-        .form-group { margin-bottom: 15px; }
-        .card { border: 1px solid #ccc; padding: 15px; margin-bottom: 15px; border-radius: 5px; }
-        img { max-width: 100%; height: auto; border-radius: 5px; margin-top: 10px; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg:        #0a0f1e;
+            --surface:   #111827;
+            --surface2:  #1a2235;
+            --border:    #1e2d45;
+            --accent:    #3b82f6;
+            --accent2:   #60a5fa;
+            --gold:      #f59e0b;
+            --green:     #10b981;
+            --orange:    #f97316;
+            --red:       #ef4444;
+            --text:      #f1f5f9;
+            --muted:     #64748b;
+            --radius:    14px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* ── NAV ── */
+        nav {
+            background: rgba(10,15,30,0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            position: sticky; top: 0; z-index: 100;
+            padding: 0 2rem;
+            display: flex; align-items: center; justify-content: space-between;
+            height: 64px;
+        }
+        .nav-brand {
+            display: flex; align-items: center; gap: 10px;
+            font-weight: 800; font-size: 1.2rem; letter-spacing: -0.5px;
+        }
+        .nav-brand .icon {
+            width: 34px; height: 34px; border-radius: 8px;
+            background: linear-gradient(135deg, var(--accent), #7c3aed);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1rem;
+        }
+        .nav-links { display: flex; gap: 0.5rem; }
+        .nav-links a {
+            color: var(--muted); text-decoration: none; padding: 6px 14px;
+            border-radius: 8px; font-size: 0.875rem; font-weight: 500;
+            transition: all 0.2s;
+        }
+        .nav-links a:hover { background: var(--surface2); color: var(--text); }
+
+        /* ── HERO ── */
+        .hero {
+            background: linear-gradient(135deg, #0a0f1e 0%, #0f1e3d 50%, #0a0f1e 100%);
+            padding: 3.5rem 2rem 3rem;
+            text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(59,130,246,0.15), transparent);
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.3);
+            color: var(--accent2); font-size: 0.78rem; font-weight: 600;
+            padding: 5px 14px; border-radius: 999px; margin-bottom: 1.2rem;
+            text-transform: uppercase; letter-spacing: 0.05em;
+        }
+        .hero h1 {
+            font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800;
+            letter-spacing: -1px; line-height: 1.1;
+            background: linear-gradient(135deg, #fff 30%, var(--accent2));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 0.75rem;
+        }
+        .hero p { color: var(--muted); font-size: 1rem; max-width: 480px; margin: 0 auto 2rem; }
+
+        .route-pill {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 999px; padding: 10px 20px; font-size: 0.9rem;
+            font-weight: 600; position: relative; z-index: 1;
+        }
+        .route-pill .dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: var(--accent);
+        }
+        .route-pill .arrow { color: var(--muted); }
+
+        /* ── SECTION WRAPPER ── */
+        .container { max-width: 960px; margin: 0 auto; padding: 2rem; }
+        .section-header {
+            display: flex; align-items: center; gap: 10px;
+            margin-bottom: 1.25rem;
+        }
+        .section-header h2 { font-size: 1.2rem; font-weight: 700; }
+        .section-header .count {
+            background: var(--accent); color: #fff;
+            font-size: 0.75rem; font-weight: 700;
+            padding: 2px 8px; border-radius: 999px;
+        }
+        .section-header .date-chip {
+            margin-left: auto;
+            background: var(--surface2); border: 1px solid var(--border);
+            color: var(--muted); font-size: 0.8rem; padding: 4px 12px;
+            border-radius: 999px; font-weight: 500;
+        }
+
+        /* ── TRAIN CARDS ── */
+        .train-list { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 3rem; }
+
+        .train-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.25rem 1.5rem;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 1rem 1.5rem;
+            align-items: center;
+            transition: border-color 0.2s, transform 0.15s;
+            cursor: pointer;
+        }
+        .train-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            background: var(--surface2);
+        }
+
+        /* code */
+        .train-code {
+            font-size: 0.85rem; font-weight: 700; color: var(--accent2);
+            background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2);
+            padding: 4px 10px; border-radius: 8px; letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+
+        /* timeline */
+        .train-timeline {
+            display: flex; align-items: center; gap: 12px;
+        }
+        .train-time { text-align: center; }
+        .train-time .time { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.5px; }
+        .train-time .station { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+
+        .train-line {
+            flex: 1; display: flex; flex-direction: column;
+            align-items: center; gap: 4px;
+        }
+        .train-line .duration {
+            font-size: 0.72rem; color: var(--muted); font-weight: 500;
+        }
+        .train-line .line-bar {
+            width: 100%; display: flex; align-items: center; gap: 4px;
+        }
+        .train-line .dot-start, .train-line .dot-end {
+            width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+        }
+        .train-line .dot-start { background: var(--accent); }
+        .train-line .dot-end   { background: var(--green); }
+        .train-line .line {
+            flex: 1; height: 2px; border-radius: 1px;
+            background: linear-gradient(90deg, var(--accent), var(--green));
+            position: relative;
+        }
+        .train-line .line::after {
+            content: '⚡';
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 10px; line-height: 1;
+        }
+
+        /* kelas badges */
+        .train-classes {
+            display: flex; flex-direction: column; gap: 6px; align-items: flex-end;
+        }
+        .kelas-row {
+            display: flex; align-items: center; gap: 8px; font-size: 0.78rem;
+        }
+        .kelas-name { color: var(--muted); font-weight: 500; }
+        .kelas-price { font-weight: 700; color: var(--text); }
+        .kelas-status {
+            padding: 2px 8px; border-radius: 999px;
+            font-size: 0.68rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .status-tersedia  { background: rgba(16,185,129,0.15); color: var(--green); border: 1px solid rgba(16,185,129,0.3); }
+        .status-terbatas  { background: rgba(249,115,22,0.15);  color: var(--orange); border: 1px solid rgba(249,115,22,0.3); }
+        .status-habis     { background: rgba(239,68,68,0.15);   color: var(--red);    border: 1px solid rgba(239,68,68,0.3); }
+
+        /* ── DIVIDER ── */
+        .divider {
+            border: none; border-top: 1px solid var(--border);
+            margin: 2rem 0;
+        }
+
+        /* ── FORM ── */
+        .form-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+        .form-group { display: flex; flex-direction: column; gap: 6px; }
+        .form-group.full { grid-column: 1 / -1; }
+        .form-group label {
+            font-size: 0.8rem; font-weight: 600; color: var(--muted);
+            text-transform: uppercase; letter-spacing: 0.05em;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            color: var(--text);
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            transition: border-color 0.2s;
+            outline: none;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus { border-color: var(--accent); }
+        .form-group select option { background: var(--surface2); }
+        .form-group textarea { resize: vertical; min-height: 90px; }
+
+        .file-input-wrapper {
+            position: relative;
+            display: flex; align-items: center;
+            background: var(--surface2);
+            border: 1px dashed var(--border);
+            border-radius: 10px;
+            padding: 14px;
+            cursor: pointer;
+            transition: border-color 0.2s;
+            gap: 10px;
+        }
+        .file-input-wrapper:hover { border-color: var(--accent); }
+        .file-input-wrapper input[type=file] {
+            position: absolute; inset: 0; opacity: 0; cursor: pointer;
+            border: none; background: none; padding: 0;
+        }
+        .file-icon { font-size: 1.4rem; }
+        .file-label-text { font-size: 0.85rem; color: var(--muted); }
+        .file-label-text span { color: var(--accent2); font-weight: 600; }
+
+        .btn-submit {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, var(--accent), #7c3aed);
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.15s;
+            letter-spacing: 0.02em;
+        }
+        .btn-submit:hover { opacity: 0.9; transform: translateY(-1px); }
+
+        /* ── LAPORAN ── */
+        .laporan-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .laporan-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            transition: border-color 0.2s;
+        }
+        .laporan-card:hover { border-color: var(--border); }
+        .laporan-meta {
+            display: flex; align-items: center; gap: 8px;
+            margin-bottom: 0.5rem;
+        }
+        .laporan-avatar {
+            width: 36px; height: 36px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), #7c3aed);
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 0.9rem; flex-shrink: 0;
+        }
+        .laporan-info strong { display: block; font-size: 0.9rem; font-weight: 600; }
+        .laporan-info small { color: var(--muted); font-size: 0.75rem; }
+        .laporan-station {
+            display: inline-flex; align-items: center; gap: 4px;
+            background: rgba(59,130,246,0.1); color: var(--accent2);
+            border: 1px solid rgba(59,130,246,0.2);
+            font-size: 0.72rem; font-weight: 600;
+            padding: 2px 8px; border-radius: 999px;
+            margin-bottom: 0.6rem;
+        }
+        .laporan-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+        .laporan-card img {
+            width: 100%; border-radius: 8px; margin-top: 0.75rem;
+            max-height: 180px; object-fit: cover;
+            border: 1px solid var(--border);
+        }
+
+        .empty-state {
+            text-align: center; padding: 3rem 2rem; color: var(--muted);
+            border: 1px dashed var(--border); border-radius: var(--radius);
+        }
+        .empty-state .icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+        .empty-state p { font-size: 0.9rem; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 640px) {
+            .train-card { grid-template-columns: 1fr; }
+            .train-classes { align-items: flex-start; }
+            .form-grid { grid-template-columns: 1fr; }
+            .form-group.full { grid-column: 1; }
+            .btn-submit { grid-column: 1; }
+            .laporan-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
     </style>
 </head>
 <body>
 
-    <h1>Whoosh Tracker</h1>
-    <p>Pantau jadwal dan laporkan kendala di stasiun Kereta Cepat Whoosh.</p>
+<!-- NAV -->
+<nav>
+    <div class="nav-brand">
+        <div class="icon">🚄</div>
+        WhooshTracker
+    </div>
+    <div class="nav-links">
+        <a href="#jadwal">Jadwal</a>
+        <a href="#lapor">Laporkan</a>
+        <a href="#laporan">Laporan</a>
+    </div>
+</nav>
 
-    <h2>Jadwal Keberangkatan</h2>
-    <table>
-        <tr>
-            <th>Stasiun Asal</th>
-            <th>Stasiun Tujuan</th>
-            <th>Waktu Berangkat</th>
-        </tr>
-        <tr>
-            <td>Halim</td>
-            <td>Padalarang</td>
-            <td>08:45 WIB</td>
-        </tr>
-        <tr>
-            <td>Padalarang</td>
-            <td>Tegalluar</td>
-            <td>09:15 WIB</td>
-        </tr>
-    </table>
+<!-- HERO -->
+<div class="hero">
+    <div class="hero-badge">⚡ Kereta Cepat Indonesia</div>
+    <h1>Jadwal & Laporan<br>Whoosh Tracker</h1>
+    <p>Pantau jadwal keberangkatan dan laporkan kendala di stasiun Kereta Cepat Whoosh secara real-time.</p>
+    <div class="route-pill">
+        <span class="dot"></span>
+        <%= rute.dari %>
+        <span class="arrow">→</span>
+        <%= rute.ke %>
+        <span class="dot" style="background:var(--green)"></span>
+    </div>
+</div>
 
-    <h2>Laporkan Kendala</h2>
-    <form action="/lapor" method="POST" enctype="multipart/form-data">
-        <div class="form-group">
-            <label>Nama Anda:</label><br>
-            <input type="text" name="namaPenumpang" required>
-        </div>
-        <div class="form-group">
-            <label>Lokasi Stasiun:</label><br>
-            <select name="stasiun" required>
-                <option value="Halim">Halim</option>
-                <option value="Karawang">Karawang</option>
-                <option value="Padalarang">Padalarang</option>
-                <option value="Tegalluar">Tegalluar</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Deskripsi Kendala:</label><br>
-            <textarea name="kendala" rows="3" required></textarea>
-        </div>
-        <div class="form-group">
-            <label>Unggah Foto Bukti (Wajib):</label><br>
-            <input type="file" name="fotoBukti" accept="image/*" required>
-        </div>
-        <button type="submit">Kirim Laporan</button>
-    </form>
+<div class="container">
 
-    <h2>Laporan Masyarakat</h2>
-    <% if (laporan.length > 0) { %>
-        <% laporan.forEach(function(item) { %>
-            <div class="card">
-                <strong><%= item.nama_penumpang %></strong> di <strong><%= item.stasiun %></strong><br>
-                <small><%= new Date(item.waktu).toLocaleString('id-ID') %></small>
-                <p><%= item.kendala %></p>
-                <img src="https://<%= cloudfrontUrl %>/<%= item.foto_key %>" alt="Foto Laporan">
+    <!-- JADWAL -->
+    <section id="jadwal">
+        <div class="section-header">
+            <h2>Jadwal Keberangkatan</h2>
+            <span class="count"><%= jadwal.length %> kereta</span>
+            <span class="date-chip">📅 <%= new Date(rute.tanggal).toLocaleDateString('id-ID', {weekday:'long', day:'numeric', month:'long', year:'numeric'}) %></span>
+        </div>
+
+        <div class="train-list">
+            <% jadwal.forEach(function(k) { %>
+            <div class="train-card">
+                <!-- Kode -->
+                <div class="train-code"><%= k.kode_kereta %></div>
+
+                <!-- Timeline -->
+                <div class="train-timeline">
+                    <div class="train-time">
+                        <div class="time"><%= k.berangkat.waktu %></div>
+                        <div class="station"><%= k.berangkat.stasiun.replace(' Summarecon','') %></div>
+                    </div>
+                    <div class="train-line">
+                        <span class="duration">⏱ <%= k.durasi %></span>
+                        <div class="line-bar">
+                            <div class="dot-start"></div>
+                            <div class="line"></div>
+                            <div class="dot-end"></div>
+                        </div>
+                    </div>
+                    <div class="train-time" style="text-align:right">
+                        <div class="time"><%= k.tiba.waktu %></div>
+                        <div class="station"><%= k.tiba.stasiun %></div>
+                    </div>
+                </div>
+
+                <!-- Kelas -->
+                <div class="train-classes">
+                    <% k.kelas.forEach(function(cls) { %>
+                    <div class="kelas-row">
+                        <span class="kelas-name"><%= cls.nama.replace('Kelas ','') %></span>
+                        <span class="kelas-price">Rp <%= cls.harga.toLocaleString('id-ID') %></span>
+                        <span class="kelas-status <%= cls.status === 'Tiket tersedia' ? 'status-tersedia' : cls.status === 'Tiket terbatas' ? 'status-terbatas' : 'status-habis' %>">
+                            <%= cls.status === 'Tiket tersedia' ? 'Tersedia' : cls.status === 'Tiket terbatas' ? 'Terbatas' : 'Habis' %>
+                        </span>
+                    </div>
+                    <% }); %>
+                </div>
             </div>
-        <% }); %>
-    <% } else { %>
-        <p>Belum ada laporan dari masyarakat.</p>
-    <% } %>
+            <% }); %>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- FORM LAPOR -->
+    <section id="lapor">
+        <div class="section-header">
+            <h2>🚨 Laporkan Kendala</h2>
+        </div>
+
+        <div class="form-card">
+            <form action="/lapor" method="POST" enctype="multipart/form-data">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Nama Anda</label>
+                        <input type="text" name="namaPenumpang" placeholder="Masukkan nama lengkap" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Lokasi Stasiun</label>
+                        <select name="stasiun" required>
+                            <option value="" disabled selected>Pilih stasiun…</option>
+                            <option value="Halim">Halim</option>
+                            <option value="Karawang">Karawang</option>
+                            <option value="Padalarang">Padalarang</option>
+                            <option value="Tegalluar">Tegalluar Summarecon</option>
+                        </select>
+                    </div>
+                    <div class="form-group full">
+                        <label>Deskripsi Kendala</label>
+                        <textarea name="kendala" placeholder="Jelaskan kendala yang terjadi…" required></textarea>
+                    </div>
+                    <div class="form-group full">
+                        <label>Foto Bukti (Wajib)</label>
+                        <div class="file-input-wrapper">
+                            <span class="file-icon">📷</span>
+                            <div class="file-label-text"><span>Pilih foto</span> atau seret ke sini</div>
+                            <input type="file" name="fotoBukti" accept="image/*" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-submit">Kirim Laporan →</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- LAPORAN MASYARAKAT -->
+    <section id="laporan">
+        <div class="section-header">
+            <h2>📋 Laporan Masyarakat</h2>
+            <% if (laporan.length > 0) { %>
+            <span class="count"><%= laporan.length %></span>
+            <% } %>
+        </div>
+
+        <% if (laporan.length > 0) { %>
+        <div class="laporan-grid">
+            <% laporan.forEach(function(item) { %>
+            <div class="laporan-card">
+                <div class="laporan-meta">
+                    <div class="laporan-avatar"><%= item.nama_penumpang.charAt(0).toUpperCase() %></div>
+                    <div class="laporan-info">
+                        <strong><%= item.nama_penumpang %></strong>
+                        <small><%= new Date(item.waktu).toLocaleString('id-ID', {dateStyle:'medium', timeStyle:'short'}) %></small>
+                    </div>
+                </div>
+                <div class="laporan-station">📍 <%= item.stasiun %></div>
+                <p><%= item.kendala %></p>
+                <img src="https://<%= cloudfrontUrl %>/<%= item.foto_key %>" alt="Foto laporan dari <%= item.nama_penumpang %>">
+            </div>
+            <% }); %>
+        </div>
+        <% } else { %>
+        <div class="empty-state">
+            <div class="icon">📭</div>
+            <p>Belum ada laporan dari masyarakat.<br>Jadilah yang pertama melaporkan kendala!</p>
+        </div>
+        <% } %>
+    </section>
+
+</div>
 
 </body>
 </html>
