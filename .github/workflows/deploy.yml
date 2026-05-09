@@ -34,4 +34,4 @@ jobs:
 
     - name: Force deployment to Amazon ECS
       run: |
-        aws ecs update-service --cluster Whoosh-Cluster --service whoosh-service --force-new-deployment --region ap-southeast-1
+        aws ecs update-service --cluster whoosh-cluster --service whoosh-service-4rl6u3c3 --force-new-deployment --region ap-southeast-2
